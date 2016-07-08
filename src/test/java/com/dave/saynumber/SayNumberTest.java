@@ -22,10 +22,10 @@ public class SayNumberTest {
 	}
 	
 	@Test
-	public void testSayThousands() {
-		assertEquals("two five hundred and one", SayNumber.sayNumber(2501));
-		assertEquals("one hundred and twenty five five hundred and one", SayNumber.sayNumber(125501));
-		assertEquals("sixty one hundred and twenty five five hundred and one", SayNumber.sayNumber(60125501));
+	public void testSayThousandsAnMillions() {
+		assertEquals("two thousand five hundred and one", SayNumber.sayNumber(2501));
+		assertEquals("one hundred and twenty five thousand five hundred and one", SayNumber.sayNumber(125501));
+		assertEquals("sixty million one hundred and twenty five thousand five hundred and one", SayNumber.sayNumber(60125501));
 		assertEquals("seventeen", SayNumber.sayNumber(17));
 	}	
 	

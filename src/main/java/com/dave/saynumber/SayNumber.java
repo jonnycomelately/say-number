@@ -3,6 +3,9 @@ package com.dave.saynumber;
 
 public class SayNumber {
 	
+	private static final String MILLION = "million";
+	private static final String THOUSAND = "thousand";
+	
 	private SayNumber() {
 	}
 	
@@ -24,17 +27,30 @@ public class SayNumber {
 		StringBuilder builder = new StringBuilder();
 		
 		int index = 0;
-		for (int groupSize : groups) {
-			
+		int magnitude = groups.length;
+		for (int groupSize : groups) {						
 			String group = number.substring(index, index + groupSize);
 			builder.append(SayHundreds.sayHundreds(group)).append(" ");
+			
+			builder.append(groupMagnitudeString(magnitude)).append(" ");
+			
 			index += groupSize;
+			magnitude--;
 		}
 		
 		// remove trailing space
-		builder.delete(builder.length() -1, builder.length());
-		
-		return builder.toString();
+		return builder.toString().trim();
+	}
+	
+	
+	private static String groupMagnitudeString(int magnitude)
+	{
+		switch (magnitude) {
+		case 3: return MILLION;
+		case 2: return THOUSAND;
+		default:
+			return "";
+		}
 	}
 	
 	
