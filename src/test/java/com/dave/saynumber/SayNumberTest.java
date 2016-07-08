@@ -11,22 +11,38 @@ public class SayNumberTest {
 		assertEquals("zero", SayNumber.sayNumber(0));
 	}
 
-	@Test 
-	public void testSay3DigitNumbers() {
-		assertEquals("twenty two", SayNumber.sayNumber(22));
-		assertEquals("thirteen", SayNumber.sayNumber(13));
-		assertEquals("ninety nine", SayNumber.sayNumber(99));
-		assertEquals("six", SayNumber.sayNumber(6));
-		assertEquals("fourty five", SayNumber.sayNumber(45));
-				
-		assertEquals("one hundred and one", SayNumber.sayNumber(101));
-		assertEquals("one hundred and twenty", SayNumber.sayNumber(120));
-		assertEquals("three hundred and twenty six", SayNumber.sayNumber(326));
-		assertEquals("five hundred", SayNumber.sayNumber(500));
-	}	
+
 	
 	@Test
 	public void testSayThousands() {
-		assertEquals("two thousand", SayNumber.sayNumber(2000));
+//		assertEquals("two thousand", SayNumber.sayNumber(2000));
 	}	
+	
+	@Test
+	public void testhundredsSepartorPositions() {
+		int [] groups = SayNumber.hundredsSepartorPositions("5".length());
+		assertEquals(1, groups.length);
+		assertEquals(1, groups[0]);
+		
+		groups = SayNumber.hundredsSepartorPositions("20".length());
+		assertEquals(1, groups.length);
+		assertEquals(2, groups[0]);		
+		
+		groups = SayNumber.hundredsSepartorPositions("500".length());
+		assertEquals(1, groups.length);
+		assertEquals(3, groups[0]);		
+		
+		groups = SayNumber.hundredsSepartorPositions("20000".length());
+		assertEquals(2, groups.length);
+		assertEquals(2, groups[0]);			
+		assertEquals(3, groups[1]);			
+		
+		groups = SayNumber.hundredsSepartorPositions("2000000".length());
+		assertEquals(3, groups.length);
+		assertEquals(1, groups[0]);			
+		assertEquals(3, groups[1]);			
+		assertEquals(3, groups[2]);			
+				
+	}
+	
 }
