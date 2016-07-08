@@ -50,7 +50,7 @@ public class SayDigitTest {
 	public void testSayTensDigit() {
 		assertEquals("twenty", SayDigit.sayTensDigit('2'));
 		assertEquals("thirty", SayDigit.sayTensDigit('3'));
-		assertEquals("fourty", SayDigit.sayTensDigit('4'));
+		assertEquals("forty", SayDigit.sayTensDigit('4'));
 		assertEquals("fifty", SayDigit.sayTensDigit('5'));
 		assertEquals("sixty", SayDigit.sayTensDigit('6'));
 		assertEquals("seventy", SayDigit.sayTensDigit('7'));

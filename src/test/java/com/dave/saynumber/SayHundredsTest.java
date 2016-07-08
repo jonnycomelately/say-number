@@ -12,7 +12,7 @@ public class SayHundredsTest {
 		assertEquals("thirteen", SayHundreds.sayHundreds("13"));
 		assertEquals("ninety nine", SayHundreds.sayHundreds("99"));
 		assertEquals("six", SayHundreds.sayHundreds("6"));
-		assertEquals("fourty five", SayHundreds.sayHundreds("45"));
+		assertEquals("forty five", SayHundreds.sayHundreds("45"));
 				
 		assertEquals("one hundred and one", SayHundreds.sayHundreds("101"));
 		assertEquals("one hundred and twenty", SayHundreds.sayHundreds("120"));

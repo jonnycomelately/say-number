@@ -55,7 +55,7 @@ public class SayDigit {
 		switch (digit) {
 		case '2': return "twenty";
 		case '3': return "thirty";
-		case '4': return "fourty";
+		case '4': return "forty";
 		case '5': return "fifty";
 		case '6': return "sixty";
 		case '7': return "seventy";
