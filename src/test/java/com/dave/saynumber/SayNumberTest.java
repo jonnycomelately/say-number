@@ -6,6 +6,16 @@ import org.junit.Test;
 
 public class SayNumberTest {
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testNegativeNumbersArntAccepted() {
+		SayNumber.sayNumber(-1);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testNumbers_GreaterThanOrEqualToABillionThrows() {
+		SayNumber.sayNumber(1_000_000_000);
+	}
+	
 	@Test
 	public void testSayZero() {
 		assertEquals("zero", SayNumber.sayNumber(0));

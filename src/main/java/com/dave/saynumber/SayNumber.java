@@ -7,8 +7,9 @@ public class SayNumber {
 	}
 	
 	public static String sayNumber(int number) {
-		if (number < 0) {
-			throw new IllegalArgumentException("This function only handles positive number for now...");
+
+		if (number < 0 || number > 999_999_999) {
+			throw new IllegalArgumentException("Only numbers in the range 0 to 999,999,999 are accepted");
 		}
 		
 		return sayNumber(Integer.toString(number));
