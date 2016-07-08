@@ -20,6 +20,14 @@ public class SayHundredsTest {
 		assertEquals("five hundred", SayHundreds.sayHundreds("500"));
 	}	
 	
+	@Test
+	public void testWithLeadingZeroDigits()
+	{
+		assertEquals("and twenty two", SayHundreds.sayHundreds("022"));
+		assertEquals("and one", SayHundreds.sayHundreds("001"));
+	}
+	
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSayHundreds_ThrowsWithEmptyString()
 	{

@@ -2,6 +2,10 @@ package com.dave.saynumber;
 
 public class SayHundreds {
 	
+	private static final String _HUNDRED = " hundred";
+	private static final String AND_ = "and ";
+	private static final String _AND_ = " and ";
+	
 	private SayHundreds() {
 		
 	}
@@ -17,25 +21,32 @@ public class SayHundreds {
 		}
 		
 		StringBuilder builder = new StringBuilder();
-	
-		int nextDigitIndex = 0;
-		boolean sayAnd = false;
-		if (number.length() == 3) {
-			builder.append(SayDigit.sayDigit(number.charAt(nextDigitIndex)));
-			builder.append(" hundred");
+
+		String andString = "";
 			
-			sayAnd = true;
+		int nextDigitIndex = 0;
+		if (number.length() == 3) {
+			char ch = number.charAt(nextDigitIndex);
+			if (ch != '0') {
+				builder.append(SayDigit.sayDigit(ch));
+				builder.append(_HUNDRED);
+				andString = _AND_;
+			}
+			else {
+				andString = AND_;
+			}
+			
 			nextDigitIndex++;
 		}
-		
+		 
 		if (number.length() > 1) {
 			String doubleDigits = doubleDigitsToEnglish(number, nextDigitIndex);
 			
-			if (sayAnd && doubleDigits.isEmpty() == false) {
-				builder.append(" and ");
+			if (doubleDigits.isEmpty() == false) {
+				builder.append(andString);
+				builder.append(doubleDigits);
 			}
 			
-			builder.append(doubleDigits);
 		}
 		else if (number.length() == 1) {
 			builder.append(saySingleDigit(number, 0));
