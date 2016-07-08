@@ -5,7 +5,11 @@ package com.dave.saynumber;
  */
 public class SayDigit {
 	
-	public String sayDigit(char digit) {
+	private SayDigit() {
+		
+	}
+	
+	public static String sayDigit(char digit) {
 		
 		switch (digit) {
 		case '0': return "zero"; 
@@ -23,7 +27,7 @@ public class SayDigit {
 		}
 	}
 	
-	public String sayTeenDigit(char digit) {
+	public static String sayTeenDigit(char digit) {
 		
 		switch (digit) {
 		case '0': return "ten"; 
@@ -41,7 +45,7 @@ public class SayDigit {
 		}
 	}
 	
-	public String sayTensDigit(char digit) {
+	public static String sayTensDigit(char digit) {
 		
 		if (digit == '0' || digit == '1')
 		{

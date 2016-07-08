@@ -2,9 +2,11 @@ package com.dave.saynumber;
 
 public class SayNumber {
 	
-	private SayDigit digitSpeaker = new SayDigit();
+	private SayNumber() {
+		
+	}
 	
-	public String sayNumber(int number) {
+	public static String sayNumber(int number) {
 		if (number < 0) {
 			throw new IllegalArgumentException("This function only handles positive number for now...");
 		}
@@ -12,9 +14,9 @@ public class SayNumber {
 		return sayNumber(Integer.toString(number));
 	}
 	
-	private String sayNumber(String number) {
+	private static String sayNumber(String number) {
 		if (number.equals("0")) {
-			return digitSpeaker.sayDigit('0');
+			return SayDigit.sayDigit('0');
 		}
 		
 		StringBuilder builder = new StringBuilder();
@@ -29,7 +31,7 @@ public class SayNumber {
 	 * @param number
 	 * @return
 	 */
-	private String sayHundreds(String number) {
+	private static String sayHundreds(String number) {
 		if (number.length() > 3) {
 			throw new IllegalArgumentException("This function can only say 3 digit numbers");
 		}
@@ -39,7 +41,7 @@ public class SayNumber {
 		int nextDigitIndex = 0;
 		boolean sayAnd = false;
 		if (number.length() == 3) {
-			builder.append(digitSpeaker.sayDigit(number.charAt(nextDigitIndex)));
+			builder.append(SayDigit.sayDigit(number.charAt(nextDigitIndex)));
 			builder.append(" hundred");
 			
 			sayAnd = true;
@@ -62,29 +64,33 @@ public class SayNumber {
 		return builder.toString();
 	}
 
-	private String doubleDigitsToEnglish(String number, int offset)
+	private static String doubleDigitsToEnglish(String number, int offset)
 	{
 		char digit = number.charAt(offset);
 		
 		if (digit == '0') {
-			return saySingleDigit(number, ++offset);
+			return saySingleDigit(number, offset +1);
 		}
 		
 		if (digit == '1') {
-			return digitSpeaker.sayTeenDigit(number.charAt(++offset));
+			return SayDigit.sayTeenDigit(number.charAt(offset +1));
 		}
 		else {
-			return digitSpeaker.sayTensDigit(number.charAt(offset)) + " " +
-					digitSpeaker.sayDigit(number.charAt(++offset));
+			String lastDigit = saySingleDigit(number, offset +1);
+			if (lastDigit.isEmpty()) {
+				return SayDigit.sayTensDigit(number.charAt(offset));
+			}
+			else {
+				return SayDigit.sayTensDigit(number.charAt(offset)) + " " + lastDigit;
+			}
 		}
-			
 	}
 	
-	private String saySingleDigit(String number, int offset)
+	private static String saySingleDigit(String number, int offset)
 	{
 		char digit = number.charAt(offset);
 		if (digit != '0') {
-			return digitSpeaker.sayDigit(digit);
+			return SayDigit.sayDigit(digit);
 		}
 		else {
 			return "";

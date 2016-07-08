@@ -8,78 +8,72 @@ public class SayDigitTest {
 
 	@Test
 	public void testSayDigit() {
-		SayDigit sayer = new SayDigit();
-		
-		assertEquals("zero", sayer.sayDigit('0'));
-		assertEquals("one", sayer.sayDigit('1'));
-		assertEquals("two", sayer.sayDigit('2'));
-		assertEquals("three", sayer.sayDigit('3'));
-		assertEquals("four", sayer.sayDigit('4'));
-		assertEquals("five", sayer.sayDigit('5'));
-		assertEquals("six", sayer.sayDigit('6'));
-		assertEquals("seven", sayer.sayDigit('7'));
-		assertEquals("eight", sayer.sayDigit('8'));
-		assertEquals("nine", sayer.sayDigit('9'));
+		assertEquals("zero", SayDigit.sayDigit('0'));
+		assertEquals("one", SayDigit.sayDigit('1'));
+		assertEquals("two", SayDigit.sayDigit('2'));
+		assertEquals("three", SayDigit.sayDigit('3'));
+		assertEquals("four", SayDigit.sayDigit('4'));
+		assertEquals("five", SayDigit.sayDigit('5'));
+		assertEquals("six", SayDigit.sayDigit('6'));
+		assertEquals("seven", SayDigit.sayDigit('7'));
+		assertEquals("eight", SayDigit.sayDigit('8'));
+		assertEquals("nine", SayDigit.sayDigit('9'));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSayDigit_NonDigitCharacterThrows()
 	{
-		new SayDigit().sayDigit('a');
+		SayDigit.sayDigit('a');
 	}
 	
 	@Test
 	public void testSayTeenDigit() {
-		SayDigit sayer = new SayDigit();
-		
-		assertEquals("ten", sayer.sayTeenDigit('0'));
-		assertEquals("eleven", sayer.sayTeenDigit('1'));
-		assertEquals("twelve", sayer.sayTeenDigit('2'));
-		assertEquals("thirteen", sayer.sayTeenDigit('3'));
-		assertEquals("fourteen", sayer.sayTeenDigit('4'));
-		assertEquals("fifteen", sayer.sayTeenDigit('5'));
-		assertEquals("sixteen", sayer.sayTeenDigit('6'));
-		assertEquals("seventeen", sayer.sayTeenDigit('7'));
-		assertEquals("eighteen", sayer.sayTeenDigit('8'));
-		assertEquals("nineteen", sayer.sayTeenDigit('9'));
+		assertEquals("ten", SayDigit.sayTeenDigit('0'));
+		assertEquals("eleven", SayDigit.sayTeenDigit('1'));
+		assertEquals("twelve", SayDigit.sayTeenDigit('2'));
+		assertEquals("thirteen", SayDigit.sayTeenDigit('3'));
+		assertEquals("fourteen", SayDigit.sayTeenDigit('4'));
+		assertEquals("fifteen", SayDigit.sayTeenDigit('5'));
+		assertEquals("sixteen", SayDigit.sayTeenDigit('6'));
+		assertEquals("seventeen", SayDigit.sayTeenDigit('7'));
+		assertEquals("eighteen", SayDigit.sayTeenDigit('8'));
+		assertEquals("nineteen", SayDigit.sayTeenDigit('9'));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSayTeenDigit_NonDigitCharacterThrows()
 	{
-		new SayDigit().sayDigit('Y');
+		SayDigit.sayDigit('Y');
 	}
 	
 	@Test
 	public void testSayTensDigit() {
-		SayDigit sayer = new SayDigit();
-		
-		assertEquals("twenty", sayer.sayTensDigit('2'));
-		assertEquals("thirty", sayer.sayTensDigit('3'));
-		assertEquals("fourty", sayer.sayTensDigit('4'));
-		assertEquals("fifty", sayer.sayTensDigit('5'));
-		assertEquals("sixty", sayer.sayTensDigit('6'));
-		assertEquals("seventy", sayer.sayTensDigit('7'));
-		assertEquals("eighty", sayer.sayTensDigit('8'));
-		assertEquals("ninety", sayer.sayTensDigit('9'));
+		assertEquals("twenty", SayDigit.sayTensDigit('2'));
+		assertEquals("thirty", SayDigit.sayTensDigit('3'));
+		assertEquals("fourty", SayDigit.sayTensDigit('4'));
+		assertEquals("fifty", SayDigit.sayTensDigit('5'));
+		assertEquals("sixty", SayDigit.sayTensDigit('6'));
+		assertEquals("seventy", SayDigit.sayTensDigit('7'));
+		assertEquals("eighty", SayDigit.sayTensDigit('8'));
+		assertEquals("ninety", SayDigit.sayTensDigit('9'));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSayTensDigit_NonDigitCharacterThrows()
 	{
-		new SayDigit().sayTensDigit('Y');
+		SayDigit.sayTensDigit('Y');
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSayTensDigit_0DigitThrows()
 	{
-		new SayDigit().sayTensDigit('0');
+		SayDigit.sayTensDigit('0');
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSayTensDigit_1DigitThrows()
 	{
-		new SayDigit().sayTensDigit('1');
+		SayDigit.sayTensDigit('1');
 	}	
 	
 	
