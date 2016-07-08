@@ -30,9 +30,16 @@ public class SayNumber {
 		int magnitude = groups.length;
 		for (int groupSize : groups) {						
 			String group = number.substring(index, index + groupSize);
-			builder.append(SayHundreds.sayHundreds(group)).append(" ");
 			
-			builder.append(groupMagnitudeString(magnitude)).append(" ");
+			String english = SayHundreds.sayHundreds(group);
+			// the digits 000 will return an empty string
+			if (!english.isEmpty())
+			{
+				builder.append(english).append(" ");
+				// add the thousands/millions
+				builder.append(groupMagnitudeString(magnitude)).append(" ");
+			}
+			
 			
 			index += groupSize;
 			magnitude--;
