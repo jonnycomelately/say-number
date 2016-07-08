@@ -1,9 +1,9 @@
 package com.dave.saynumber;
 
+
 public class SayNumber {
 	
 	private SayNumber() {
-		
 	}
 	
 	public static String sayNumber(int number) {
@@ -19,15 +19,33 @@ public class SayNumber {
 			return SayDigit.sayDigit('0');
 		}
 		
+		int [] groups = hundredsSepartorPositions(number.length());
 		StringBuilder builder = new StringBuilder();
-	
-		builder.append(SayHundreds.sayHundreds(number));
+		
+		int index = 0;
+		for (int groupSize : groups) {
+			
+			String group = number.substring(index, index + groupSize);
+			builder.append(SayHundreds.sayHundreds(group)).append(" ");
+			index += groupSize;
+		}
+		
+		// remove trailing space
+		builder.delete(builder.length() -1, builder.length());
 		
 		return builder.toString();
 	}
 	
 	
-	
+	/**
+	 * Get the position of groups of digits where the ',' hundred 
+	 * separator would go.<br> 
+	 * For example 1,200 has 2 groups of size [1, 3].
+	 * 20,000,000 has 3 groups of size [2, 3, 3]
+	 * 
+	 * @param numberLength The number of digits in the number
+	 * @return
+	 */
 	static int [] hundredsSepartorPositions(int numberLength)
 	{
 		final int GROUP_LENGTH = 3;

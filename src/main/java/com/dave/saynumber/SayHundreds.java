@@ -8,12 +8,12 @@ public class SayHundreds {
 	
 	/** 
 	 * Says a number in the range 0 -> 999
-	 * @param number
+	 * @param number 
 	 * @return
 	 */
 	public static String sayHundreds(String number) {
-		if (number.length() > 3) {
-			throw new IllegalArgumentException("This function can only say 3 digit numbers");
+		if (number.length() > 3 || number.length() == 0) {
+			throw new IllegalArgumentException("This function can only say 1, 2 or 3 digit numbers");
 		}
 		
 		StringBuilder builder = new StringBuilder();

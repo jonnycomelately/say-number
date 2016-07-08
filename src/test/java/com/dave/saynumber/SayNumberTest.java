@@ -10,12 +10,13 @@ public class SayNumberTest {
 	public void testSayZero() {
 		assertEquals("zero", SayNumber.sayNumber(0));
 	}
-
-
 	
 	@Test
 	public void testSayThousands() {
-//		assertEquals("two thousand", SayNumber.sayNumber(2000));
+		assertEquals("two five hundred and one", SayNumber.sayNumber(2501));
+		assertEquals("one hundred and twenty five five hundred and one", SayNumber.sayNumber(125501));
+		assertEquals("sixty one hundred and twenty five five hundred and one", SayNumber.sayNumber(60125501));
+		assertEquals("seventeen", SayNumber.sayNumber(17));
 	}	
 	
 	@Test
@@ -42,7 +43,5 @@ public class SayNumberTest {
 		assertEquals(1, groups[0]);			
 		assertEquals(3, groups[1]);			
 		assertEquals(3, groups[2]);			
-				
-	}
-	
+	}	
 }

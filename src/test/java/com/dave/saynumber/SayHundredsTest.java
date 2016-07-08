@@ -7,7 +7,7 @@ import org.junit.Test;
 public class SayHundredsTest {
 
 	@Test 
-	public void testSay3DigitNumbers() {
+	public void testSay1to3DigitNumbers() {
 		assertEquals("twenty two", SayHundreds.sayHundreds("22"));
 		assertEquals("thirteen", SayHundreds.sayHundreds("13"));
 		assertEquals("ninety nine", SayHundreds.sayHundreds("99"));
@@ -19,5 +19,17 @@ public class SayHundredsTest {
 		assertEquals("three hundred and twenty six", SayHundreds.sayHundreds("326"));
 		assertEquals("five hundred", SayHundreds.sayHundreds("500"));
 	}	
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testSayHundreds_ThrowsWithEmptyString()
+	{
+		SayHundreds.sayHundreds("");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testSayHundreds_ThrowsWith4DigitString()
+	{
+		SayHundreds.sayHundreds("1234");
+	}
 
 }
