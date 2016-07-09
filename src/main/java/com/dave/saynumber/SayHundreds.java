@@ -1,5 +1,14 @@
 package com.dave.saynumber;
 
+/**
+ * Class for converting 3 digit number strings to English words.<br>
+ * For example<br>:
+ * 1 = one<br>
+ * 22 = twenty two<br>
+ * 504 = five hundred and 4<br>
+ * 000 = ""<br>
+ * 001 = and one<br>
+ */
 public class SayHundreds {
 	
 	private static final String _HUNDRED = " hundred";

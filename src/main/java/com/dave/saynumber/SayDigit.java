@@ -1,7 +1,7 @@
 package com.dave.saynumber;
 
 /**
- * Class to numerical convert digit characters to english words.
+ * Class to convert numerical characters to english words.
  */
 public class SayDigit {
 	

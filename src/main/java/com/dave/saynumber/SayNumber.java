@@ -1,10 +1,19 @@
 package com.dave.saynumber;
 
-
+/**
+ * Renders a number in the range 0 - 999,999,999 in English.
+ * 
+ * The algorithm is based on the observation that the 3 digit
+ * groups between the thousand separators are said the same way 
+ * e.g. 'one hundred and 2'. The final string is then built by
+ * appending the appropriate magnitude ('millions', 'thousands')
+ * between the groups and putting the 'and's in the correct place.
+ */
 public class SayNumber {
 	
 	private static final String MILLION = "million";
 	private static final String THOUSAND = "thousand";
+	private static final int THOUSANDS_GROUP_LENGTH = 3;
 	
 	private SayNumber() {
 	}
@@ -23,11 +32,14 @@ public class SayNumber {
 			return SayDigit.sayDigit('0');
 		}
 		
-		int [] groups = hundredsSepartorPositions(number.length());
+		// split the number into groups where the thousands separators go
+		int [] groups = thousandsSepartorPositions(number.length());
 		StringBuilder builder = new StringBuilder();
 		
 		int index = 0;
 		int magnitude = groups.length;
+		
+		// say each group
 		for (int groupSize : groups) {						
 			String group = number.substring(index, index + groupSize);
 			
@@ -35,11 +47,10 @@ public class SayNumber {
 			// the digits 000 will return an empty string
 			if (!english.isEmpty())
 			{
+				// add the thousands/millions 
 				builder.append(english).append(" ");
-				// add the thousands/millions
 				builder.append(groupMagnitudeString(magnitude)).append(" ");
 			}
-			
 			
 			index += groupSize;
 			magnitude--;
@@ -62,7 +73,7 @@ public class SayNumber {
 	
 	
 	/**
-	 * Get the position of groups of digits where the ',' hundred 
+	 * Get the position of groups of digits where the ',' thousands 
 	 * separator would go.<br> 
 	 * For example 1,200 has 2 groups of size [1, 3].
 	 * 20,000,000 has 3 groups of size [2, 3, 3]
@@ -70,21 +81,21 @@ public class SayNumber {
 	 * @param numberLength The number of digits in the number
 	 * @return
 	 */
-	static int [] hundredsSepartorPositions(int numberLength)
-	{
-		final int GROUP_LENGTH = 3;
-		int numGroups = ((numberLength + GROUP_LENGTH -1) / GROUP_LENGTH);
+	// visible for testing - I can't use guava for the annotation 
+	static int [] thousandsSepartorPositions(int numberLength)
+	{		
+		int numGroups = (numberLength + THOUSANDS_GROUP_LENGTH -1) / THOUSANDS_GROUP_LENGTH;
 		int [] result = new int[numGroups];
 		
-		int numDigitsInFirstGroup = numberLength % 3;
+		int numDigitsInFirstGroup = numberLength % THOUSANDS_GROUP_LENGTH;
 		if (numDigitsInFirstGroup == 0) {
-			numDigitsInFirstGroup = 3;
+			numDigitsInFirstGroup = THOUSANDS_GROUP_LENGTH;
 		}
 		result[0] = numDigitsInFirstGroup;
 		
 		for (int i=1; i<numGroups; i++)
 		{
-			result[i] = 3;
+			result[i] = THOUSANDS_GROUP_LENGTH;
 		}
 		
 		return result;
